@@ -43,6 +43,7 @@ ul {
 }
 
 button {
+  transform-origin: center;
   height: 75px;
   width: 175px;
   margin: 3px;
@@ -56,6 +57,9 @@ button {
 
 button:hover {
   background-color: #2d936c;
+}
+button:active {
+  scale: 95%;
 }
 
 #newGame {

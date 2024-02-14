@@ -56,8 +56,7 @@ export default class WordGame {
     const finSve = this.state.word1.getMatch()
     const sveWord = this.state.word2.getWord()
 
-    //tarkastetaan ovatko match
-    //Asetetaan oikein tai väärin
+    //Tarkastetaan ovatko match
     if (finSve !== sveWord) {
       this.state.button1.style.backgroundColor = 'red'
       this.state.button1.style.borderColor = 'red'
@@ -68,9 +67,9 @@ export default class WordGame {
         this.state.button1.style.borderColor = null
         this.state.button2.style.backgroundColor = null
         this.state.button2.style.borderColor = null
-      }, 1000)
+      }, 500)
     }
-    //Siivotaan state
+    //Siivotaan state destrukturoimalla
     const { word1, word2, ...rest } = this.state
     this.state = rest
   }

@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "server": "json-server --port=3001 --watch db.json"
   },
   "author": "AnssiAi",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^1.0.0-alpha.22"
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2"
   }
 }
