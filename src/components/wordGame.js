@@ -3,7 +3,8 @@ import { getRandomInt, shuffle } from './utils.js'
 import Word from './word.js'
 
 export default class WordGame {
-  constructor() {
+  constructor(device) {
+    this.device = device
     this.element = document.querySelector('.game')
     this.words = wordList
     this.listLen = this.words.length
@@ -81,6 +82,7 @@ export default class WordGame {
   }
 
   render() {
+    console.log(this.device)
     this.gameWords = this.pickWords(this.words, this.listLen)
     this.setup(this.gameWords)
 
@@ -119,9 +121,15 @@ export default class WordGame {
     //Asetetaan napille ominaisuudet
     newBtn.setAttribute('id', 'newGame')
     newBtn.innerHTML = 'uusi peli'
-    newBtn.addEventListener('click', () => {
-      this.newGame()
-    })
+    if (this.device != 'desktop') {
+      newBtn.addEventListener('touchend', () => {
+        this.newGame()
+      })
+    } else {
+      newBtn.addEventListener('click', () => {
+        this.newGame()
+      })
+    }
 
     //Lisätään div bodyyn
     this.element.append(newBtn)

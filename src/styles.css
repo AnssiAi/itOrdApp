@@ -26,7 +26,7 @@ h1 {
 .word__list {
   display: grid;
   grid-template-columns: 50% 50%;
-  column-gap: 25px;
+  column-gap: 5%;
 }
 
 #fin__words {
