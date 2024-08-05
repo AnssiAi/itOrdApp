@@ -5,8 +5,8 @@ body {
 
 .content {
   display: grid;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 10% auto 10%;
+  grid-template-columns: 10dvw auto 10dvw;
+  grid-template-rows: 10dvh auto 10dvh;
   justify-items: center;
 }
 h1 {
@@ -26,7 +26,7 @@ h1 {
 .word__list {
   display: grid;
   grid-template-columns: 50% 50%;
-  column-gap: 25px;
+  column-gap: 3%;
 }
 
 #fin__words {
@@ -43,19 +43,23 @@ ul {
 }
 
 button {
-  height: 75px;
-  width: 175px;
-  margin: 3px;
+  transform-origin: center;
+  height: 15dvw;
+  width: 25dvh;
+  margin: 1%;
   border-color: #2d936c;
   border-style: solid;
   border-radius: 10px;
   background-color: #1a1127;
   color: white;
-  font-size: 16px;
+  font-size: 1em;
 }
 
 button:hover {
   background-color: #2d936c;
+}
+button:active {
+  scale: 95%;
 }
 
 #newGame {

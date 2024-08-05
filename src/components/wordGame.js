@@ -3,7 +3,8 @@ import { getRandomInt, shuffle } from './utils.js'
 import Word from './word.js'
 
 export default class WordGame {
-  constructor() {
+  constructor(device) {
+    this.device = device
     this.element = document.querySelector('.game')
     this.words = wordList
     this.listLen = this.words.length
@@ -56,8 +57,7 @@ export default class WordGame {
     const finSve = this.state.word1.getMatch()
     const sveWord = this.state.word2.getWord()
 
-    //tarkastetaan ovatko match
-    //Asetetaan oikein tai väärin
+    //Tarkastetaan ovatko match
     if (finSve !== sveWord) {
       this.state.button1.style.backgroundColor = 'red'
       this.state.button1.style.borderColor = 'red'
@@ -68,9 +68,9 @@ export default class WordGame {
         this.state.button1.style.borderColor = null
         this.state.button2.style.backgroundColor = null
         this.state.button2.style.borderColor = null
-      }, 1000)
+      }, 500)
     }
-    //Siivotaan state
+    //Siivotaan state destrukturoimalla
     const { word1, word2, ...rest } = this.state
     this.state = rest
   }
@@ -82,6 +82,7 @@ export default class WordGame {
   }
 
   render() {
+    console.log(this.device)
     this.gameWords = this.pickWords(this.words, this.listLen)
     this.setup(this.gameWords)
 
@@ -120,9 +121,15 @@ export default class WordGame {
     //Asetetaan napille ominaisuudet
     newBtn.setAttribute('id', 'newGame')
     newBtn.innerHTML = 'uusi peli'
-    newBtn.addEventListener('click', () => {
-      this.newGame()
-    })
+    if (this.device != 'desktop') {
+      newBtn.addEventListener('touchend', () => {
+        this.newGame()
+      })
+    } else {
+      newBtn.addEventListener('click', () => {
+        this.newGame()
+      })
+    }
 
     //Lisätään div bodyyn
     this.element.append(newBtn)
